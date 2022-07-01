@@ -11,7 +11,7 @@ namespace POE_CLOUD_VERSION1
 {
 
 
-    public partial class WebForm1
+    public partial class LoginFrom
     {
 
         /// <summary>

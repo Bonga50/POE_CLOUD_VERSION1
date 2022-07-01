@@ -1,15 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="POE_CLOUD_VERSION1.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LoginForm.aspx.cs" Inherits="POE_CLOUD_VERSION1.LoginFrom" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport"  content="width=device-width, initial-scale=0.1" />
     <style>
 h1 {text-align: center;}
 p {text-align: center;}
 div {text-align: center;
-     margin-top: 0px;
-        }
+     margin-top: 0px;}
 </style>
     <title></title>
 </head>
