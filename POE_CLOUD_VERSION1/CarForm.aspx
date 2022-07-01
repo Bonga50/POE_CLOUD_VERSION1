@@ -18,7 +18,7 @@
                "QuestionModel btnCreate DataGrid"
                "KilosTravled btnUpdate DataGrid"
                "SerciviceKillos btnDelete DataGrid"
-               "CarMake . DataGrid"
+               "CarMake btnViewAll DataGrid"
                "Carbody lblError DataGrid"
                "btnBack btnClear DataGrid";
               
@@ -29,7 +29,7 @@
                 
         }
         .QuestionCarNo {grid-area : QuestionCarNo;
-                         background-color :brown;
+                        
                         margin : 0px 0px 20px 0px;
         }
         .QuestionModel {grid-area : QuestionModel;
@@ -52,11 +52,11 @@
                    
         }
         .DataGrid {grid-area : DataGrid;
-                    background-color :brown;
+                   
         }
         /*Buttoons*/
         .btnRead {grid-area : btnRead;
-                   background-color :brown;
+                   
                    
         }
         .btnCreate {grid-area : btnCreate; 
@@ -72,6 +72,10 @@
         }
         .lblError{grid-area : lblError;
                   color : red;
+
+        }
+        .btnViewAll{grid-area : btnViewAll;
+                 
 
         }
      
@@ -140,7 +144,7 @@
             <br />
             <div class="DataGrid">   
 
-                <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                <asp:GridView ID="carDataGrid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <EditRowStyle BackColor="#999999" />
                     <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -157,7 +161,7 @@
             </div>
             <!--Buttons-->
             <div class="btnRead">
-                <asp:Button ID="btnRead" Text="Read" runat="server" Width="75"/>
+                <asp:Button ID="btnRead" Text="Read" runat="server" Width="75" OnClick="btnRead_Click"/>
             </div>
              <div class="btnCreate">
                 <asp:Button ID="btnCreate" Text="Create" runat="server" Width="75" />
@@ -169,10 +173,13 @@
                 <asp:Button ID="btnDelete" Text="Delete" runat="server" Width="75"/>
             </div>
              <div class="btnBack">
-                <asp:Button ID="btnBack" Text="Back" runat="server" Width="75"/>
+                <asp:Button ID="btnBack" Text="Back" runat="server" Width="75" OnClick="btnBack_Click"/>
             </div>
              <div class="btnClear">
-                <asp:Button ID="btnClear" Text="Clear" runat="server"  Width="75"/>
+                <asp:Button ID="btnClear" Text="Clear" runat="server"  Width="75" OnClick="btnClear_Click"/>
+            </div>
+             <div class="btnViewAll">
+                <asp:Button ID="btnViewAll" Text="View All" runat="server"  Width="75" OnClick="btnViewAll_Click"/>
             </div>
              <!--Error lable-->
             <div class="lblError">

@@ -123,13 +123,13 @@ namespace POE_CLOUD_VERSION1
         protected global::System.Web.UI.WebControls.Label lblCarBody;
 
         /// <summary>
-        /// GridView1 control.
+        /// carDataGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView carDataGrid;
 
         /// <summary>
         /// btnRead control.
@@ -184,6 +184,15 @@ namespace POE_CLOUD_VERSION1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnClear;
+
+        /// <summary>
+        /// btnViewAll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnViewAll;
 
         /// <summary>
         /// lblError control.
