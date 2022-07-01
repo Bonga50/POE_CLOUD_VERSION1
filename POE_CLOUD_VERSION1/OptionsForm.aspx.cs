@@ -16,7 +16,7 @@ namespace POE_CLOUD_VERSION1
 
         protected void btnCar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("CarForm.aspx");
         }
     }
 }
