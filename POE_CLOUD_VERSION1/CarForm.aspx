@@ -179,10 +179,10 @@
                 <asp:Button ID="btnCreate" Text="Create" runat="server" Width="75" OnClick="btnCreate_Click" />
             </div>
              <div class="btnUpdate">
-                <asp:Button ID="btnUpdate" Text="Update" runat="server" Width="75" />
+                <asp:Button ID="btnUpdate" Text="Update" runat="server" Width="75" OnClick="btnUpdate_Click" />
             </div>
              <div class="btnDelete">
-                <asp:Button ID="btnDelete" Text="Delete" runat="server" Width="75"/>
+                <asp:Button ID="btnDelete" Text="Delete" runat="server" Width="75" OnClick="btnDelete_Click"/>
             </div>
              <div class="btnBack">
                 <asp:Button ID="btnBack" Text="Back" runat="server" Width="75" OnClick="btnBack_Click"/>

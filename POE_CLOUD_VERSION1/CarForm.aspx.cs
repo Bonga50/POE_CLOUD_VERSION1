@@ -19,6 +19,7 @@ namespace POE_CLOUD_VERSION1
         String message = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblError.Text = "Error";
             lblError.Visible = false;
 
 
@@ -121,9 +122,6 @@ namespace POE_CLOUD_VERSION1
         {
             try
             {
-
-
-
                 con.Open();
                 cmd = new SqlCommand
                     ("insert into Car(CarNo,CarMakeID,CarModel,CarBodyTypeID,KilosTraveled,ServiceKilos,Available) values ('" +
@@ -142,6 +140,52 @@ namespace POE_CLOUD_VERSION1
 
                 lblError.Visible = true;
             }
+
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand("DELETE FROM Car WHERE CarNo ='" + txtCarNo.Text + "'", con);
+                lblError.Text = "Deleted";
+                lblError.Visible = true;
+                SqlDataReader dr = cmd.ExecuteReader();
+                con.Close();
+            }
+            catch (Exception)
+            {
+
+                lblError.Visible = true;
+            }
+
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand("UPDATE Car SET CarMakeID = "
+                  + (cmbCarMake.SelectedIndex) + ", CarModel = '"
+                  + txtCarModel.Text + "', CarBodyTypeID = "
+                  + (cmbCarBody.SelectedIndex ) + ", KilosTraveled = "
+                  + Int32.Parse(txtKilosT.Text) + ", ServiceKilos = "
+                  + Int32.Parse(txtServiceKilos.Text) + ", Available = '"
+                  + (cmbAvailable.Value) + "' WHERE CarNo = '"
+                  + txtCarNo.Text + "'", con);
+                lblError.Text = "Updated";
+                lblError.Visible = true;
+                SqlDataReader dr = cmd.ExecuteReader();
+                con.Close();
+            }
+            catch (Exception)
+            {
+
+                lblError.Visible = true;
+            }
+
 
         }
     }
