@@ -78,13 +78,13 @@ namespace POE_CLOUD_VERSION1
         protected global::System.Web.UI.WebControls.Label lblKillosT;
 
         /// <summary>
-        /// lblKilosT control.
+        /// txtKilosT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox lblKilosT;
+        protected global::System.Web.UI.WebControls.TextBox txtKilosT;
 
         /// <summary>
         /// lblServiceKilos control.
@@ -114,6 +114,15 @@ namespace POE_CLOUD_VERSION1
         protected global::System.Web.UI.WebControls.Label lblCarMake;
 
         /// <summary>
+        /// cmbCarMake control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect cmbCarMake;
+
+        /// <summary>
         /// lblCarBody control.
         /// </summary>
         /// <remarks>
@@ -121,6 +130,33 @@ namespace POE_CLOUD_VERSION1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCarBody;
+
+        /// <summary>
+        /// cmbCarBody control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect cmbCarBody;
+
+        /// <summary>
+        /// lblAvailable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAvailable;
+
+        /// <summary>
+        /// cmbAvailable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect cmbAvailable;
 
         /// <summary>
         /// carDataGrid control.

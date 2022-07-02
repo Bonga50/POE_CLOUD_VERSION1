@@ -34,29 +34,38 @@ namespace POE_CLOUD_VERSION1
         {
             try
             {
-                
+
                 con.Open();
                 //sql command 
                 cmd = new SqlCommand
                     ("select Car.CarNo,Car.CarModel,CarMake.CarMakeDesc,CarBodyType.CarBodyDesc,Car.KilosTraveled, Car.ServiceKilos, Car.Available from((Car inner join CarBodyType on Car.CarBodyTypeID = CarBodyType.CarBodyID)inner join CarMake on Car.CarMakeID = CarMake.CarMakeID) where Car.CarNo ='" + txtCarNo.Text + "'", con);
                 SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows == true)
-                {
-                    carDataGrid.DataSource = dr;
-                    carDataGrid.DataBind();
 
-                }
-                else {
-                    throw new ArgumentException ("error");
-                }
-               
-                
-                
+                   
+                    if (dr.HasRows == true)
+                    {
+
+                        carDataGrid.DataSource = dr;
+                        carDataGrid.DataBind();
+                        
+
+                    }
+                    else
+                    {
+                        throw new ArgumentException("error");
+                    }
+
+
                 con.Close();
+                
             }
-            catch (ArgumentException) {
+            catch (ArgumentException)
+            {
                 lblError.Visible = true;
             }
+            catch(Exception)
+            { lblError.Visible = true; }
+            
 
         }
 
@@ -105,6 +114,34 @@ namespace POE_CLOUD_VERSION1
         {
             carDataGrid.DataSource = null;
             carDataGrid.DataBind();
+
+        }
+
+        protected void btnCreate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+
+                con.Open();
+                cmd = new SqlCommand
+                    ("insert into Car(CarNo,CarMakeID,CarModel,CarBodyTypeID,KilosTraveled,ServiceKilos,Available) values ('" +
+                    txtCarNo.Text + "'," +
+                    (cmbCarMake.SelectedIndex) + ",'" +
+                    txtCarModel.Text + "'," +
+                    (cmbCarBody.SelectedIndex) + "," +
+                    Int32.Parse(txtKilosT.Text) + "," +
+                    Int32.Parse(txtServiceKilos.Text) + ",'" +
+                    cmbAvailable.Value + "')", con);
+                SqlDataReader dr = cmd.ExecuteReader();
+                con.Close();
+            }
+            catch (Exception)
+            {
+
+                lblError.Visible = true;
+            }
 
         }
     }

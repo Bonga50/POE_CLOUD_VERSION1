@@ -11,7 +11,7 @@
         .grid {
            display : grid;
            grid-template-columns :  350px 100px auto;
-           grid-template-rows : auto auto auto auto auto auto auto auto ;
+           grid-template-rows : auto auto auto auto auto auto auto auto auto ;
            grid-template-areas :
                "Title Title Title"
                "QuestionCarNo btnRead DataGrid"
@@ -20,6 +20,7 @@
                "SerciviceKillos btnDelete DataGrid"
                "CarMake btnViewAll DataGrid"
                "Carbody lblError DataGrid"
+               "cmbAvailable . DataGrid"
                "btnBack btnClear DataGrid";
               
            
@@ -78,6 +79,7 @@
                  
 
         }
+        .cmbAvailable{grid-area : cmbAvailable;}
      
     </style>
     <title></title>
@@ -107,7 +109,7 @@
             <!-- Car killos traveld -->
             <div class="KilosTravled">
              <asp:Label  ID="lblKillosT" runat="server"  Font-Names="Segoe UI" Width="150" >Kilos Travled</asp:Label>
-           <asp:TextBox ID="lblKilosT" runat="server" Height="14"></asp:TextBox>
+           <asp:TextBox ID="txtKilosT" runat="server" Height="14"></asp:TextBox>
             </div>
             <br />
             <!-- Car Service kilos -->
@@ -119,7 +121,7 @@
             <!-- Car Make -->
             <div class="CarMake">
                 <asp:Label  ID="lblCarMake" runat="server"  Font-Names="Segoe UI" Width="150"  >Car Make</asp:Label>
-                <select id="cmbCarMake" >
+                <select id="cmbCarMake"  runat="server" >
                     <option value="Select">Select....</option>
                     <option value="Hyundai">Hyundai</option>
                     <option value="BMW">BMW</option>
@@ -133,7 +135,7 @@
            <!-- Car Body -->
             <div class="Carbody">
                 <asp:Label  ID="lblCarBody" runat="server"  Font-Names="Segoe UI" Width="150" >Car Body</asp:Label>
-                <select id="cmbCarBody" >
+                <select id="cmbCarBody"  runat="server"  >
                     <option value="Select">Select....</option>
                     <option value="Hatchback">Hatchback</option>
                     <option value="Sedan">Sedan</option>
@@ -142,6 +144,16 @@
                 </select>
             </div>
             <br />
+            <!-- Availability -->
+            <div class="cmbAvailable">
+                <asp:Label  ID="lblAvailable" runat="server"  Font-Names="Segoe UI" Width="150" >Availability</asp:Label>
+                <select id="cmbAvailable"  runat="server"  >
+                    <option value="Select">Select....</option>
+                    <option value="yes">yes</option>
+                    <option value="no">no</option>
+                </select>
+            </div>
+
             <div class="DataGrid">   
 
                 <asp:GridView ID="carDataGrid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
@@ -164,7 +176,7 @@
                 <asp:Button ID="btnRead" Text="Read" runat="server" Width="75" OnClick="btnRead_Click"/>
             </div>
              <div class="btnCreate">
-                <asp:Button ID="btnCreate" Text="Create" runat="server" Width="75" />
+                <asp:Button ID="btnCreate" Text="Create" runat="server" Width="75" OnClick="btnCreate_Click" />
             </div>
              <div class="btnUpdate">
                 <asp:Button ID="btnUpdate" Text="Update" runat="server" Width="75" />
