@@ -4,6 +4,41 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <style>
+
+        .grid{display: grid;}
+        /*Lables*/
+        .Title{ grid-area: Title;}
+        .lblInspectorNum{grid-area : lblInspectorNum;
+                          margin : 0px 0px 20px 0px;
+        }
+        .lblinspectorFname{grid-area : lblinspectorFname;
+                            margin : 0px 0px 20px 0px;
+        }
+        .lblInspectorSurname{grid-area : lblInspectorSurname;
+                              margin : 0px 0px 20px 0px;
+        }
+        .lblInspectorEmail{grid-area : lblInspectorEmail;
+                            margin : 0px 0px 20px 0px;
+        }
+        .lblInspectorMobile{grid-area  : lblInspectorMobile;
+                             margin : 0px 0px 20px 0px;
+        }
+            /*Buttons*/
+        .btnRead{grid-area : btnRead;}
+        .btnCreate{grid-area : btnCreate;}
+        .btnUpdate{grid-area : btnUpdate;}
+        .btnDelete{grid-area : btnDelete;}
+        .btnBack{grid-area : btnBack;}
+        .btnClear{grid-area : btnClear;}
+        .btnViewAll{grid-area : btnViewAll;}
+        /*Error*/
+        .lblError {
+            grid-area: lblError;
+            color: red;
+        }
+
+    </style>
     <title></title>
 </head>
 <body>

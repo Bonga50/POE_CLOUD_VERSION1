@@ -57,8 +57,7 @@
         }
         /*Buttoons*/
         .btnRead {grid-area : btnRead;
-                   
-                   
+                        
         }
         .btnCreate {grid-area : btnCreate; 
                       
