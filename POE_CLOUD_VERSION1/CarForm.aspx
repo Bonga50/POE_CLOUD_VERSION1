@@ -153,7 +153,7 @@
                     <option value="no">no</option>
                 </select>
             </div>
-
+            <!-- Display  data grid-->
             <div class="DataGrid">   
 
                 <asp:GridView ID="carDataGrid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">

@@ -6,7 +6,19 @@
 <head runat="server">
     <style>
 
-        .grid{display: grid;}
+        .grid{display: grid;
+               grid-template-columns :  350px 100px auto;
+               grid-template-rows : auto auto auto auto auto auto auto auto;
+               grid-template-areas : 
+                   "Title Title Title"
+                   "lblInspectorNum btnRead DataGrid"
+                   "lblinspectorFname btnCreate DataGrid "
+                   "lblInspectorSurname btnUpdate DataGrid"
+                   "lblInspectorEmail btnDelete DataGrid"
+                   "lblInspectorMobile btnViewAll DataGrid"
+                   ". lblError DataGrid"
+                   "btnBack btnClear DataGrid"
+        }
         /*Lables*/
         .Title{ grid-area: Title;}
         .lblInspectorNum{grid-area : lblInspectorNum;
@@ -24,6 +36,8 @@
         .lblInspectorMobile{grid-area  : lblInspectorMobile;
                              margin : 0px 0px 20px 0px;
         }
+        /*grid*/
+        .DataGrid{grid-area  : DataGrid;}
             /*Buttons*/
         .btnRead{grid-area : btnRead;}
         .btnCreate{grid-area : btnCreate;}
@@ -80,28 +94,46 @@
                    <asp:TextBox ID="txtInspectorMobile" runat="server" Height="14"></asp:TextBox>
             </div>
             <br />
+            <!-- Display  data grid-->
+            <div class="DataGrid">   
+
+                <asp:GridView ID="InspectorDataGrid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                    <EditRowStyle BackColor="#999999" />
+                    <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                    <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                    <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                    <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                    <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                    <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                </asp:GridView>
+
+            </div>
 
             <!--Buttons-->
             <div class="btnRead">
-                <asp:Button ID="btnRead" Text="Read" runat="server" Width="75" OnClick="btnRead_Click"/>
+                <asp:Button ID="btnRead" Text="Read" runat="server" Width="75" />
             </div>
              <div class="btnCreate">
-                <asp:Button ID="btnCreate" Text="Create" runat="server" Width="75" OnClick="btnCreate_Click" />
+                <asp:Button ID="btnCreate" Text="Create" runat="server" Width="75" />
             </div>
              <div class="btnUpdate">
-                <asp:Button ID="btnUpdate" Text="Update" runat="server" Width="75" OnClick="btnUpdate_Click" />
+                <asp:Button ID="btnUpdate" Text="Update" runat="server" Width="75"  />
             </div>
              <div class="btnDelete">
-                <asp:Button ID="btnDelete" Text="Delete" runat="server" Width="75" OnClick="btnDelete_Click"/>
+                <asp:Button ID="btnDelete" Text="Delete" runat="server" Width="75" />
             </div>
              <div class="btnBack">
-                <asp:Button ID="btnBack" Text="Back" runat="server" Width="75" OnClick="btnBack_Click"/>
+                <asp:Button ID="btnBack" Text="Back" runat="server" Width="75" />
             </div>
              <div class="btnClear">
-                <asp:Button ID="btnClear" Text="Clear" runat="server"  Width="75" OnClick="btnClear_Click"/>
+                <asp:Button ID="btnClear" Text="Clear" runat="server"  Width="75" />
             </div>
              <div class="btnViewAll">
-                <asp:Button ID="btnViewAll" Text="View All" runat="server"  Width="75" OnClick="btnViewAll_Click"/>
+                <asp:Button ID="btnViewAll" Text="View All" runat="server"  Width="75" />
             </div>
              <!--Error lable-->
             <div class="lblError">
