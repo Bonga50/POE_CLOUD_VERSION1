@@ -126,6 +126,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Inspector.aspx" />
     <Content Include="OptionsForm.aspx" />
     <Content Include="LoginForm.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -203,6 +204,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Inspector.aspx.cs">
+      <DependentUpon>Inspector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inspector.aspx.designer.cs">
+      <DependentUpon>Inspector.aspx</DependentUpon>
     </Compile>
     <Compile Include="OptionsForm.aspx.cs">
       <DependentUpon>OptionsForm.aspx</DependentUpon>

@@ -4,6 +4,69 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <style>
+        .grid{display : grid;
+           grid-template-columns :  350px 100px auto;
+           grid-template-rows : auto auto auto auto auto auto auto auto auto auto auto auto;
+            grid-template-areas :
+               "Title Title Title"
+                "QuestionDriverNo btnRead DataGrid"
+                "QuestionDriverName btnCreate DataGrid"
+                "DriverSurname btnUpdate DataGrid"
+                "DriverEmail btnDelete DataGrid"
+                "DriverMobile btnViewAll DataGrid"
+                "DriverAddresNum lblError DataGrid"
+                "DriverAddresStreet lblError DataGrid"
+                "DriverState lblError DataGrid"
+                "DriverZip lblError DataGrid"
+                "btnBack btnClear DataGrid";
+        }
+        /*Lables*/
+        .Title {grid-area : Title;
+                margin : 0px 0px 20px 0px;
+        }
+        .QuestionDriverNo{grid-area : QuestionDriverNo;
+                          margin : 0px 0px 20px 0px;
+        }
+        .QuestionDriverName{grid-area : QuestionDriverName;
+                            margin : 0px 0px 20px 0px;
+        }
+        .DriverSurname{grid-area : DriverSurname;
+                       margin : 0px 0px 20px 0px;
+        }
+        .DriverEmail{grid-area : DriverEmail;
+                     margin : 0px 0px 20px 0px;
+        }
+        .DriverMobile{grid-area : DriverMobile;
+                      margin : 0px 0px 20px 0px;
+        }
+        .DriverAddresNum{grid-area : DriverAddresNum;
+                         margin : 0px 0px 20px 0px;
+        }
+        .DriverAddresStreet{grid-area : DriverAddresStreet;
+                            margin : 0px 0px 20px 0px;
+        }
+        .DriverState{grid-area : DriverState;
+                     margin : 0px 0px 20px 0px;
+        }
+        .DriverZip{grid-area : DriverZip;
+                   margin : 0px 0px 20px 0px;
+        }
+        /*Grid*/
+        .DataGrid{grid-area : DataGrid;}
+        /*Buttons*/
+        .btnRead{grid-area : btnRead;}
+        .btnCreate{grid-area : btnCreate;}
+        .btnUpdate{grid-area : btnUpdate;}
+        .btnDelete{grid-area : btnDelete;}
+        .btnBack{grid-area : btnBack;}
+        .btnClear{grid-area : btnClear;}
+        .btnViewAll{grid-area : btnViewAll;}
+        /*Error*/
+        .lblError{grid-area : lblError;
+                  color : red;
+        }
+    </style>
     <title></title>
 </head>
 <body>
@@ -90,25 +153,25 @@
             </div>
             <!--Buttons-->
             <div class="btnRead">
-                <asp:Button ID="btnRead" Text="Read" runat="server" Width="75" OnClick="btnRead_Click"/>
+                <asp:Button ID="btnRead" Text="Read" runat="server" Width="75" />
             </div>
              <div class="btnCreate">
-                <asp:Button ID="btnCreate" Text="Create" runat="server" Width="75" OnClick="btnCreate_Click" />
+                <asp:Button ID="btnCreate" Text="Create" runat="server" Width="75" />
             </div>
              <div class="btnUpdate">
-                <asp:Button ID="btnUpdate" Text="Update" runat="server" Width="75" OnClick="btnUpdate_Click" />
+                <asp:Button ID="btnUpdate" Text="Update" runat="server" Width="75" />
             </div>
              <div class="btnDelete">
-                <asp:Button ID="btnDelete" Text="Delete" runat="server" Width="75" OnClick="btnDelete_Click"/>
+                <asp:Button ID="btnDelete" Text="Delete" runat="server" Width="75" />
             </div>
              <div class="btnBack">
-                <asp:Button ID="btnBack" Text="Back" runat="server" Width="75" OnClick="btnBack_Click"/>
+                <asp:Button ID="btnBack" Text="Back" runat="server" Width="75" />
             </div>
              <div class="btnClear">
-                <asp:Button ID="btnClear" Text="Clear" runat="server"  Width="75" OnClick="btnClear_Click"/>
+                <asp:Button ID="btnClear" Text="Clear" runat="server"  Width="75"/>
             </div>
              <div class="btnViewAll">
-                <asp:Button ID="btnViewAll" Text="View All" runat="server"  Width="75" OnClick="btnViewAll_Click"/>
+                <asp:Button ID="btnViewAll" Text="View All" runat="server"  Width="75" />
             </div>
              <!--Error lable-->
             <div class="lblError">
