@@ -129,6 +129,7 @@
     <Content Include="Inspector.aspx" />
     <Content Include="OptionsForm.aspx" />
     <Content Include="LoginForm.aspx" />
+    <Content Include="RentalForm.aspx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -247,6 +248,13 @@
     </Compile>
     <Compile Include="LoginForm.aspx.designer.cs">
       <DependentUpon>LoginForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RentalForm.aspx.cs">
+      <DependentUpon>RentalForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RentalForm.aspx.designer.cs">
+      <DependentUpon>RentalForm.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
