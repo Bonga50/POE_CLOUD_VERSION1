@@ -19,7 +19,7 @@ namespace POE_CLOUD_VERSION1
         }
         void Session_Start(object sender, EventArgs e)
         {
-           //Response.Redirect("~/LoginForm.aspx");
+           Response.Redirect("~/LoginForm.aspx");
         }
     }
 }
