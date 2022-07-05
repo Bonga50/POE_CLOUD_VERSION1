@@ -18,6 +18,7 @@ namespace POE_CLOUD_VERSION1
         DataSet ds;
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblError.Visible = false;
 
         }
 
@@ -57,17 +58,15 @@ namespace POE_CLOUD_VERSION1
         {
             //select * from ReturnCar where ReturnID =1;SELECT ReturnID,RentalID,ReturnDate, 
 
-            DATEDIFF(day, GETDATE(), ReturnDate)As ElapsedDays,
-            
-(DATEDIFF(day, Rental.EndDate, ReturnDate) * 500) 
-
-AS LateFines from ReturnCar;
+ 
             try
 
             {
                 con.Open();
                 cmd = new SqlCommand
-                   ("select * from ReturnCar where ReturnID ="+ Int32.Parse(txtReturnID.Text)+";", con);
+                   ("SELECT ReturnCar.ReturnID,ReturnCar.RentalID,ReturnCar.ReturnDate,DATEDIFF(day, Rental.EndDate, "+
+                   txtReturnDate.Text+")As ElapsedDays,(DATEDIFF(day, Rental.EndDate, "+
+                   txtReturnDate.Text+") * 500) AS LateFines from ReturnCar join Rental on ReturnCar.RentalID =  Rental.RentalID where ReturnCar.ReturnID="+Int32.Parse(txtReturnID.Text)+";", con);
                 SqlDataReader dr = cmd.ExecuteReader();
 
 
