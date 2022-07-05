@@ -18,7 +18,7 @@ namespace POE_CLOUD_VERSION1
         DataSet ds;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           lblError.Visible = false;
 
         }
 
@@ -59,13 +59,13 @@ namespace POE_CLOUD_VERSION1
                 con.Open();
                 cmd = new SqlCommand("insert into Driver(FirstName, LastName, Email, Mobile, StreetNo, City, States, zipcode) values('"+
                     txtDrivername.Text + "', '"
-                    + txtDriverSurname + "', '" 
+                    + txtDriverSurname.Text + "', '" 
                     + txtDriverEmail.Text + "', " 
                     + Int32.Parse(txtDriverMobile.Text) + ", "+ 
                     Int32.Parse(txtAddressNum.Text) + ", '"+
                     txtDriverStreet.Text+"', '"+
                     txtDriverState.Text+"', "+ 
-                    Int32.Parse(txtAddressNum.Text) + ");", con); ;
+                    Int32.Parse(txtDriverZip.Text) + ");", con); ;
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.HasRows == true)
                 {
@@ -87,8 +87,100 @@ namespace POE_CLOUD_VERSION1
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            //update Driver set FirstName ='Fname', LastName='Lname', Email='Email',Mobile = 0000,StreetNo=00,City='Street name and city',States='State',zipcode=0000 
-            //where DriverID = 1;
+            
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand("update Driver set FirstName ='"
+                    +txtDrivername.Text+"', LastName='"+
+                    txtDriverSurname.Text + "', Email='"+
+                    txtDriverEmail.Text + "',Mobile = "+
+                    Int32.Parse(txtDriverMobile.Text) + 
+                    ",StreetNo="+ Int32.Parse(txtAddressNum.Text) 
+                    + ",City='"+ txtDriverStreet.Text 
+                    + "',States='"+ txtDriverState.Text
+                    + "',zipcode="+ Int32.Parse(txtDriverZip.Text) 
+                    + " where DriverID = "+ Int32.Parse(txtDriverID.Text) + ";", con); ;
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows == true)
+                {
+                    DriverDataGrid.DataSource = dr;
+                    DriverDataGrid.DataBind();
+
+                }
+                lblError.Text = "Updated";
+                lblError.Visible = true;
+                con.Close();
+
+            }
+            catch (Exception)
+            {
+                lblError.Visible = true;
+
+            }
+
+
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            //delete from Driver where DriverID = 1;
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand("delete from Driver where DriverID = "+ Int32.Parse(txtDriverID.Text) + ";", con); ;
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows == true)
+                {
+                    DriverDataGrid.DataSource = dr;
+                    DriverDataGrid.DataBind();
+
+                }
+                lblError.Text = "Deleted";
+                lblError.Visible = true;
+                con.Close();
+
+            }
+            catch (Exception)
+            {
+                lblError.Visible = true;
+
+            }
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("OptionsForm.aspx");
+        }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            DriverDataGrid.DataSource = null;
+            DriverDataGrid.DataBind();
+        }
+
+        protected void btnViewAll_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                con.Open();
+                cmd = new SqlCommand("select * from Driver", con); ;
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.HasRows == true)
+                {
+                    DriverDataGrid.DataSource = dr;
+                    DriverDataGrid.DataBind();
+
+                }
+                
+                con.Close();
+
+            }
+            catch (Exception)
+            {
+                lblError.Visible = true;
+
+            }
         }
     }
 }

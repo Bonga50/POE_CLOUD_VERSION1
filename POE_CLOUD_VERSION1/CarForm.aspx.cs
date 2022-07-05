@@ -167,8 +167,7 @@ namespace POE_CLOUD_VERSION1
             try
             {
                 con.Open();
-                cmd = new SqlCommand("UPDATE Car SET CarMakeID = "
-                  + (cmbCarMake.SelectedIndex) + ", CarModel = '"
+                cmd = new SqlCommand("UPDATE Car SET  CarModel = '"
                   + txtCarModel.Text + "', CarBodyTypeID = "
                   + (cmbCarBody.SelectedIndex ) + ", KilosTraveled = "
                   + Int32.Parse(txtKilosT.Text) + ", ServiceKilos = "

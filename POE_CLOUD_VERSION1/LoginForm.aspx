@@ -13,6 +13,9 @@ div {text-align: center;
      margin-top: 0px;}
 .lblError{color : red;}
 </style>
+    
+
+
     <title></title>
 </head>
 <body>
@@ -43,7 +46,7 @@ div {text-align: center;
         <div>
             <asp:Button ID="btnLogin" runat="server" Height="25" Width="150" Text="Login" OnClick="btnLogin_Click" />
         </div>
-
+        
        
     </form>
 </body>

@@ -162,16 +162,16 @@
                 <asp:Button ID="btnUpdate" Text="Update" runat="server" Width="75" OnClick="btnUpdate_Click" />
             </div>
              <div class="btnDelete">
-                <asp:Button ID="btnDelete" Text="Delete" runat="server" Width="75" />
+                <asp:Button ID="btnDelete" Text="Delete" runat="server" Width="75" OnClick="btnDelete_Click" />
             </div>
              <div class="btnBack">
-                <asp:Button ID="btnBack" Text="Back" runat="server" Width="75" />
+                <asp:Button ID="btnBack" Text="Back" runat="server" Width="75" OnClick="btnBack_Click" />
             </div>
              <div class="btnClear">
-                <asp:Button ID="btnClear" Text="Clear" runat="server"  Width="75"/>
+                <asp:Button ID="btnClear" Text="Clear" runat="server"  Width="75" OnClick="btnClear_Click"/>
             </div>
              <div class="btnViewAll">
-                <asp:Button ID="btnViewAll" Text="View All" runat="server"  Width="75" />
+                <asp:Button ID="btnViewAll" Text="View All" runat="server"  Width="75" OnClick="btnViewAll_Click" />
             </div>
              <!--Error lable-->
             <div class="lblError">
