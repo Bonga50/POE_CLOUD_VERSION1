@@ -99,7 +99,12 @@ namespace POE_CLOUD_VERSION1
                     InspectorDataGrid.DataBind();
 
                 }
-              lblError.Text = "Created";
+                else
+                {
+                    throw new ArgumentException();
+                }
+
+                lblError.Text = "Created";
               lblError.Visible = true;  
                 con.Close();
 

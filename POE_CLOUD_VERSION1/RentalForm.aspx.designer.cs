@@ -87,6 +87,24 @@ namespace POE_CLOUD_VERSION1
         protected global::System.Web.UI.WebControls.TextBox txtInspectorID;
 
         /// <summary>
+        /// lblDriverId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDriverId;
+
+        /// <summary>
+        /// txtDriverID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDriverID;
+
+        /// <summary>
         /// lblRentalFee control.
         /// </summary>
         /// <remarks>
@@ -114,6 +132,15 @@ namespace POE_CLOUD_VERSION1
         protected global::System.Web.UI.WebControls.Label lblrentalStartDate;
 
         /// <summary>
+        /// txtRentalStartDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRentalStartDate;
+
+        /// <summary>
         /// lblRentalEnddate control.
         /// </summary>
         /// <remarks>
@@ -121,6 +148,15 @@ namespace POE_CLOUD_VERSION1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblRentalEnddate;
+
+        /// <summary>
+        /// txtRentalEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRentalEndDate;
 
         /// <summary>
         /// lblError control.
@@ -177,12 +213,12 @@ namespace POE_CLOUD_VERSION1
         protected global::System.Web.UI.WebControls.Button btnClear;
 
         /// <summary>
-        /// carDataGrid control.
+        /// RentalDataGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView carDataGrid;
+        protected global::System.Web.UI.WebControls.GridView RentalDataGrid;
     }
 }

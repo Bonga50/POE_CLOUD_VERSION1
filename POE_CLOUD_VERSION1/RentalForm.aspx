@@ -13,6 +13,7 @@
                    "lblRentalID btnRead DataGrid"
                    "lblCarID btnCreate DataGrid"
                    "lblInspectorID btnViewAll DataGrid"
+                   "lblDriverID lblError DataGrid"
                    "lblRentalFee lblError DataGrid"
                    "lblRentalstartdate lblError DataGrid"
                    "lblRentalEnddate lblError DataGrid"
@@ -67,6 +68,9 @@
                  
 
         }
+        .lblDriverID{grid-area : lblDriverID;
+                      margin : 0px 0px 20px 0px;
+        }
 
     </style>
     <title></title>
@@ -99,6 +103,12 @@
            <asp:TextBox ID="txtInspectorID" runat="server" Height="14"></asp:TextBox>
             </div>
             <br />
+            <!-- Driver lable -->
+            <div class="lblDriverID">
+             <asp:Label  ID="lblDriverId" runat="server"  Font-Names="Segoe UI" Width="150" >DriverID</asp:Label>
+           <asp:TextBox ID="txtDriverID" runat="server" Height="14"></asp:TextBox>
+            </div>
+            <br />
             <!-- Rental fee-->
             <div class="lblRentalFee">
                   <asp:Label  ID="lblRentalFee" runat="server"  Font-Names="Segoe UI" Width="150" >Rental Fee</asp:Label>
@@ -106,15 +116,16 @@
             </div>
             <br />
             <!--Start date-->
+            <!--https://www.c-sharpcorner.com/UploadFile/4b0136/introducing-html-5-date-input-type-in-Asp-Net/ -->
              <div class="lblRentalstartdate">
-                  <asp:Label  ID="lblrentalStartDate" runat="server"  Font-Names="Segoe UI" Width="150" >Start Date</asp:Label>
-                  <input type="date" id="RentalStartDate" />
+                  <asp:Label  ID="lblrentalStartDate" runat="server"  Font-Names="Segoe UI" Width="150" >Start Date (yyyy-mm-dd)</asp:Label>
+                   <asp:TextBox ID="txtRentalStartDate" runat="server" Height="14" TextMode="Date" ></asp:TextBox>
             </div>
-            <br />
+            <br />  
             <!--End date-->
              <div class="lblRentalEnddate">
-                  <asp:Label  ID="lblRentalEnddate" runat="server"  Font-Names="Segoe UI" Width="150" >End Date</asp:Label>
-                  <input type="date" id="RentalEndDate" />
+                  <asp:Label  ID="lblRentalEnddate" runat="server"  Font-Names="Segoe UI" Width="150"  >End Date (yyyy-mm-dd)</asp:Label>
+                  <asp:TextBox ID="txtRentalEndDate" runat="server" Height="14" TextMode="Date"  ></asp:TextBox>
             </div>
             <br />
               <!--Error lable-->
@@ -123,13 +134,13 @@
           </div>
             <!--Buttons-->
             <div class="btnRead">
-                <asp:Button ID="btnRead" Text="Retrive" runat="server" Width="75" />
+                <asp:Button ID="btnRead" Text="Retrive" runat="server" Width="75" OnClick="btnRead_Click" />
             </div>
              <div class="btnCreate">
-                <asp:Button ID="btnCreate" Text="Create" runat="server" Width="75" />
+                <asp:Button ID="btnCreate" Text="Create" runat="server" Width="75" OnClick="btnCreate_Click" />
             </div>
              <div class="btnViewAll">
-                <asp:Button ID="btnViewAll" Text="View All" runat="server"  Width="75" />
+                <asp:Button ID="btnViewAll" Text="View All" runat="server"  Width="75" OnClick="btnViewAll_Click" />
             </div>
              <div class="btnBack">
                 <asp:Button ID="btnBack" Text="Back" runat="server" Width="75"/>
@@ -140,7 +151,7 @@
                    <!-- Display  data grid-->
             <div class="DataGrid">   
 
-                <asp:GridView ID="carDataGrid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                <asp:GridView ID="RentalDataGrid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <EditRowStyle BackColor="#999999" />
                     <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
