@@ -34,6 +34,7 @@
                              margin : 0px 0px 20px 0px;
         }
         .lblError{grid-area : lblError;
+                  color : red;
                    margin : 0px 0px 20px 0px;
         }
         /*Buttoons*/

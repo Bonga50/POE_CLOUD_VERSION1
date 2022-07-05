@@ -11,6 +11,7 @@ h1 {text-align: center;}
 p {text-align: center;}
 div {text-align: center;
      margin-top: 0px;}
+.lblError{color : red;}
 </style>
     <title></title>
 </head>
@@ -25,7 +26,11 @@ div {text-align: center;
         <div > 
             <asp:Label Height="80" ID="lblLoginTitle" runat="server"  Font-Names="Segoe UI"> Please Login</asp:Label>
         </div>
-        <br />  
+        <br /> 
+         <!--Error lable-->
+            <div class="lblError">
+            <asp:Label  ID="lblError" runat="server"  Font-Names="Segoe UI" Width="150" >Error</asp:Label>
+          </div>
          <div> 
             <asp:Label ID="lblLogin" runat="server"  Font-Names="Segoe UI"> Inspector ID&nbsp;&nbsp;&nbsp;&nbsp; </asp:Label>
              <asp:TextBox ID="txtLogin" runat="server" Height="14"></asp:TextBox>
@@ -38,6 +43,8 @@ div {text-align: center;
         <div>
             <asp:Button ID="btnLogin" runat="server" Height="25" Width="150" Text="Login" OnClick="btnLogin_Click" />
         </div>
+
+       
     </form>
 </body>
 </html>

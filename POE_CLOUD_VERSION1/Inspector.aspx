@@ -133,7 +133,7 @@
                 <asp:Button ID="btnClear" Text="Clear" runat="server"  Width="75" />
             </div>
              <div class="btnViewAll">
-                <asp:Button ID="btnViewAll" Text="View All" runat="server"  Width="75" />
+                <asp:Button ID="btnViewAll" Text="View All" runat="server"  Width="75" OnClick="btnViewAll_Click" />
             </div>
              <!--Error lable-->
             <div class="lblError">

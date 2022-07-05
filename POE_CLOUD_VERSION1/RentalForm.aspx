@@ -18,8 +18,6 @@
                    "lblRentalEnddate lblError DataGrid"
                    "btnBack btnClear DataGrid";
 
-
-
         }
 
         .DataGrid {grid-area : DataGrid;

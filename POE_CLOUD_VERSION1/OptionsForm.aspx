@@ -30,35 +30,35 @@ div {text-align: center;
         <div>
             <asp:Label ID="lblClickDriver" runat="server" Width="200" Font-Names="Segoe UI"  > Click here for Driver</asp:Label> 
 
-            <asp:Button ID="btnDriver" runat="server" Font-Names="Segoe UI" Text="Driver"  Width="90px" OnClick="btnCar_Click" />
+            <asp:Button ID="btnDriver" runat="server" Font-Names="Segoe UI" Text="Driver"  Width="90px" OnClick="btnDriver_Click" />
         </div>
            <br />  
         <!-- Inspector button -->
         <div>
             <asp:Label ID="lblClickInspector" runat="server" Width="200" Font-Names="Segoe UI"  > Click here for Inspector</asp:Label> 
 
-            <asp:Button ID="btnInspectors" runat="server" Font-Names="Segoe UI" Text="Inspector"  Width="90px" OnClick="btnCar_Click" />
+            <asp:Button ID="btnInspectors" runat="server" Font-Names="Segoe UI" Text="Inspector"  Width="90px" OnClick="btnInspectors_Click"/>
         </div>
          <br />  
         <!-- Rental button -->
         <div>
             <asp:Label ID="lblClickRental" runat="server" Width="200" Font-Names="Segoe UI"  > Click here for Rental</asp:Label> 
 
-            <asp:Button ID="btnRental" runat="server" Font-Names="Segoe UI" Text="Rental"  Width="90px" OnClick="btnCar_Click" />
+            <asp:Button ID="btnRental" runat="server" Font-Names="Segoe UI" Text="Rental"  Width="90px" OnClick="btnRental_Click" />
         </div>
           <br />  
         <!-- Return button -->
         <div>
             <asp:Label ID="lblClickReturn" runat="server" Width="200" Font-Names="Segoe UI"  > Click here for Return</asp:Label> 
 
-            <asp:Button ID="btnReturn" runat="server" Font-Names="Segoe UI" Text="Return"  Width="90px" OnClick="btnCar_Click" />
+            <asp:Button ID="btnReturn" runat="server" Font-Names="Segoe UI" Text="Return"  Width="90px" OnClick="btnReturn_Click"  />
         </div>
          <!-- back button -->
         <br /> 
         <br />  
         <div>
             
-            <asp:Button ID="btnBack" runat="server" Font-Names="Segoe UI" Text="Back"  Width="90px" OnClick="btnCar_Click" />
+            <asp:Button ID="btnBack" runat="server" Font-Names="Segoe UI" Text="Back"  Width="90px"  />
         </div>
     </form>
 </body>

@@ -18,5 +18,25 @@ namespace POE_CLOUD_VERSION1
         {
             Response.Redirect("CarForm.aspx");
         }
+
+        protected void btnDriver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Driver.aspx");
+        }
+
+        protected void btnInspectors_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Inspector.aspx");
+        }
+
+        protected void btnRental_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RentalForm.aspx");
+        }
+
+        protected void btnReturn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ReturnForm.aspx");
+        }
     }
 }
