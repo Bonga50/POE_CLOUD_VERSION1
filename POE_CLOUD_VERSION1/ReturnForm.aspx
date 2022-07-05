@@ -86,7 +86,7 @@
             <!--Return date-->
              <div class="lblRentalReturndate">
                   <asp:Label  ID="lblReturndate" runat="server"  Font-Names="Segoe UI" Width="150" >Return Date</asp:Label>
-                  <input type="date" id="ReturnDate" />
+                  <asp:TextBox ID="txtReturnDate" runat="server" Height="14" TextMode="Date" ></asp:TextBox>
 
             </div>
             <br />
@@ -97,25 +97,25 @@
           </div>
             <!--Buttons-->
             <div class="btnRead">
-                <asp:Button ID="btnRead" Text="Retrive" runat="server" Width="75" />
+                <asp:Button ID="btnRead" Text="Retrive" runat="server" Width="75" OnClick="btnRead_Click" />
             </div>
              <div class="btnCreate">
-                <asp:Button ID="btnCreate" Text="Create" runat="server" Width="75" />
+                <asp:Button ID="btnCreate" Text="Create" runat="server" Width="75" OnClick="btnCreate_Click" />
             </div>
              <div class="btnViewAll">
-                <asp:Button ID="btnViewAll" Text="View All" runat="server"  Width="75" />
+                <asp:Button ID="btnViewAll" Text="View All" runat="server"  Width="75" OnClick="btnViewAll_Click" />
             </div>
              <div class="btnBack">
-                <asp:Button ID="btnBack" Text="Back" runat="server" Width="75"/>
+                <asp:Button ID="btnBack" Text="Back" runat="server" Width="75" OnClick="btnBack_Click"/>
             </div>
              <div class="btnClear">
-                <asp:Button ID="btnClear" Text="Clear" runat="server"  Width="75" />
+                <asp:Button ID="btnClear" Text="Clear" runat="server"  Width="75" OnClick="btnClear_Click" />
             </div>
 
              <!-- Display  data grid-->
             <div class="DataGrid">   
 
-                <asp:GridView ID="carDataGrid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                <asp:GridView ID="ReturnDataGrid" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                     <EditRowStyle BackColor="#999999" />
                     <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

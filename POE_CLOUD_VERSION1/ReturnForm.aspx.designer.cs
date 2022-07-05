@@ -78,6 +78,15 @@ namespace POE_CLOUD_VERSION1
         protected global::System.Web.UI.WebControls.Label lblReturndate;
 
         /// <summary>
+        /// txtReturnDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtReturnDate;
+
+        /// <summary>
         /// lblError control.
         /// </summary>
         /// <remarks>
@@ -132,12 +141,12 @@ namespace POE_CLOUD_VERSION1
         protected global::System.Web.UI.WebControls.Button btnClear;
 
         /// <summary>
-        /// carDataGrid control.
+        /// ReturnDataGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView carDataGrid;
+        protected global::System.Web.UI.WebControls.GridView ReturnDataGrid;
     }
 }

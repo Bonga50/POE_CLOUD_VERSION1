@@ -143,10 +143,10 @@
                 <asp:Button ID="btnViewAll" Text="View All" runat="server"  Width="75" OnClick="btnViewAll_Click" />
             </div>
              <div class="btnBack">
-                <asp:Button ID="btnBack" Text="Back" runat="server" Width="75"/>
+                <asp:Button ID="btnBack" Text="Back" runat="server" Width="75" OnClick="btnBack_Click"/>
             </div>
              <div class="btnClear">
-                <asp:Button ID="btnClear" Text="Clear" runat="server"  Width="75" />
+                <asp:Button ID="btnClear" Text="Clear" runat="server"  Width="75" OnClick="btnClear_Click" />
             </div>
                    <!-- Display  data grid-->
             <div class="DataGrid">   

@@ -133,5 +133,16 @@ namespace POE_CLOUD_VERSION1
             }
 
         }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("OptionsForm.aspx");
+        }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            RentalDataGrid.DataSource = null;
+            RentalDataGrid.DataBind();
+        }
     }
 }
