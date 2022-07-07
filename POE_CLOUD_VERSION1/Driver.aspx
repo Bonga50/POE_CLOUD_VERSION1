@@ -153,7 +153,7 @@
             </div>
             <!--Buttons-->
             <div class="btnRead">
-                <asp:Button ID="btnRead" Text="Read" runat="server" Width="75" />
+                <asp:Button ID="btnRead" Text="Read" runat="server" Width="75" OnClick="btnRead_Click"/>
             </div>
              <div class="btnCreate">
                 <asp:Button ID="btnCreate" Text="Create" runat="server" Width="75" OnClick="btnCreate_Click" />

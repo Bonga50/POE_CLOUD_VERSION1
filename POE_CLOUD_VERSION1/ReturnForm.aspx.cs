@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace POE_CLOUD_VERSION1
 {
     public partial class ReturnForm : System.Web.UI.Page
     {
-        SqlConnection con = new SqlConnection(@"Data Source=tcp:siyabongasv.database.windows.net,1433;Initial Catalog=RideYouRent_St10091114;User Id=st10091114@siyabongasv;Password=Drugkind22");
+        string cs = ConfigurationManager.ConnectionStrings["RideYouRent_St10091114ConnectionString"].ConnectionString;
+        // SqlConnection con = new SqlConnection(@"Data Source=tcp:siyabongasv.database.windows.net,1433;Initial Catalog=RideYouRent_St10091114;User Id=st10091114@siyabongasv;Password=Drugkind22");
         SqlCommand cmd;
         DataTable dt;
         SqlDataAdapter da;
@@ -26,24 +28,27 @@ namespace POE_CLOUD_VERSION1
         {
             try
             {
-                con.Open();
-                cmd = new SqlCommand
-                   ("select * from ReturnCar;", con);
-                SqlDataReader dr = cmd.ExecuteReader();
-
-
-                if (dr.HasRows == true)
+                using (SqlConnection con = new SqlConnection(cs))
                 {
+                    con.Open();
+                    cmd = new SqlCommand
+                       ("select * from ReturnCar;", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
 
-                    ReturnDataGrid.DataSource = dr;
-                    ReturnDataGrid.DataBind();
 
+                    if (dr.HasRows == true)
+                    {
+
+                        ReturnDataGrid.DataSource = dr;
+                        ReturnDataGrid.DataBind();
+
+                    }
+                    else
+                    {
+                        throw new ArgumentException();
+                    }
+                    con.Close();
                 }
-                else
-                {
-                    throw new ArgumentException();
-                }
-                con.Close();
 
             }
             catch (Exception)
@@ -62,24 +67,27 @@ namespace POE_CLOUD_VERSION1
             try
 
             {
-                con.Open();
-                cmd = new SqlCommand
-                   ("SELECT ReturnCar.ReturnID,ReturnCar.RentalID,ReturnCar.ReturnDate,DATEDIFF(day, Rental.EndDate, ReturnDate)As ElapsedDays,(DATEDIFF(day, Rental.EndDate, ReturnDate) * 500)AS LateFines from ReturnCar join Rental on ReturnCar.RentalID = Rental.RentalID where ReturnCar.ReturnID = "+Int32.Parse(txtReturnID.Text)+"; ", con);
-                SqlDataReader dr = cmd.ExecuteReader();
-
-
-                if (dr.HasRows == true)
+                using (SqlConnection con = new SqlConnection(cs))
                 {
+                    con.Open();
+                    cmd = new SqlCommand
+                       ("SELECT ReturnCar.ReturnID,ReturnCar.RentalID,ReturnCar.ReturnDate,DATEDIFF(day, Rental.EndDate, ReturnDate)As ElapsedDays,(DATEDIFF(day, Rental.EndDate, ReturnDate) * 500)AS LateFines from ReturnCar join Rental on ReturnCar.RentalID = Rental.RentalID where ReturnCar.ReturnID = " + Int32.Parse(txtReturnID.Text) + "; ", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
 
-                    ReturnDataGrid.DataSource = dr;
-                    ReturnDataGrid.DataBind();
 
+                    if (dr.HasRows == true)
+                    {
+
+                        ReturnDataGrid.DataSource = dr;
+                        ReturnDataGrid.DataBind();
+
+                    }
+                    else
+                    {
+                        throw new ArgumentException();
+                    }
+                    con.Close();
                 }
-                else
-                {
-                    throw new ArgumentException();
-                }
-                con.Close();
 
             }
             catch (Exception)
@@ -94,25 +102,27 @@ namespace POE_CLOUD_VERSION1
         {
             try
             {
-                con.Open();
-                cmd = new SqlCommand
-                   ("insert into ReturnCar(RentalID, ReturnDate) values("+Int32.Parse(txtRentalFK.Text)+", '"+ txtReturnDate.Text+"')", con);
-                SqlDataReader dr = cmd.ExecuteReader();
-
-
-                if (dr.HasRows == true)
+                using (SqlConnection con = new SqlConnection(cs))
                 {
+                    con.Open();
+                    cmd = new SqlCommand
+                       ("insert into ReturnCar(RentalID, ReturnDate) values(" + Int32.Parse(txtRentalFK.Text) + ", '" + txtReturnDate.Text + "')", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
 
-                    ReturnDataGrid.DataSource = dr;
-                    ReturnDataGrid.DataBind();
 
+                    if (dr.HasRows == true)
+                    {
+
+                        ReturnDataGrid.DataSource = dr;
+                        ReturnDataGrid.DataBind();
+
+                    }
+                    else
+                    {
+                        throw new ArgumentException();
+                    }
+                    con.Close();
                 }
-                else
-                {
-                    throw new ArgumentException();
-                }
-                con.Close();
-
             }
             catch (Exception)
             {

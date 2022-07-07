@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace POE_CLOUD_VERSION1
 {
     public partial class RentalForm : System.Web.UI.Page
     {
-        SqlConnection con = new SqlConnection(@"Data Source=tcp:siyabongasv.database.windows.net,1433;Initial Catalog=RideYouRent_St10091114;User Id=st10091114@siyabongasv;Password=Drugkind22");
+        string cs = ConfigurationManager.ConnectionStrings["RideYouRent_St10091114ConnectionString"].ConnectionString;
+        
         SqlCommand cmd;
         DataTable dt;
         SqlDataAdapter da;
@@ -26,28 +28,31 @@ namespace POE_CLOUD_VERSION1
         protected void btnRead_Click(object sender, EventArgs e)
         {
             lblError.Text = "Error";
-           
 
-            try
-            {
-                con.Open();
-                cmd = new SqlCommand
-                   ("select * from Rental where RentalID = " + Int32.Parse(txtRentalno.Text) + ";", con);
-                SqlDataReader dr = cmd.ExecuteReader();
-
-
-                if (dr.HasRows == true)
+          
+                try
                 {
-
-                    RentalDataGrid.DataSource = dr;
-                    RentalDataGrid.DataBind();
-
-                }
-                else
+                using (SqlConnection con = new SqlConnection(cs))
                 {
-                    throw new ArgumentException();
+                    con.Open();
+                    cmd = new SqlCommand
+                       ("select * from Rental where RentalID = " + Int32.Parse(txtRentalno.Text) + ";", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+
+                    if (dr.HasRows == true)
+                    {
+
+                        RentalDataGrid.DataSource = dr;
+                        RentalDataGrid.DataBind();
+
+                    }
+                    else
+                    {
+                        throw new ArgumentException();
+                    }
+                    con.Close();
                 }
-                con.Close();
 
             }
             catch (Exception)
@@ -67,24 +72,26 @@ namespace POE_CLOUD_VERSION1
 
             try
             {
-                con.Open();
-                cmd = new SqlCommand
-                   ("insert into Rental(CarNo, InspectorID, DriverID, Rentalfee, Startdate, EndDate) values('"+txtCarId.Text+"', '"+
-                   txtInspectorID.Text+"', "+txtDriverID.Text+", "+txtRentalFee.Text+", '"+txtRentalStartDate.Text+"', '"+txtRentalEndDate.Text+"');", con);
-                SqlDataReader dr = cmd.ExecuteReader();
-
-
-                if (dr.HasRows == true)
+                using (SqlConnection con = new SqlConnection(cs))
                 {
+                    con.Open();
+                    cmd = new SqlCommand
+                       ("insert into Rental(CarNo, InspectorID, DriverID, Rentalfee, Startdate, EndDate) values('" + txtCarId.Text + "', '" +
+                       txtInspectorID.Text + "', " + txtDriverID.Text + ", " + txtRentalFee.Text + ", '" + txtRentalStartDate.Text + "', '" + txtRentalEndDate.Text + "');", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
 
-                    RentalDataGrid.DataSource = dr;
-                    RentalDataGrid.DataBind();
 
+                    if (dr.HasRows == true)
+                    {
+
+                        RentalDataGrid.DataSource = dr;
+                        RentalDataGrid.DataBind();
+
+                    }
+                    lblError.Text = "Created";
+                    lblError.Visible = true;
+                    con.Close();
                 }
-                lblError.Text = "Created";
-                lblError.Visible = true;
-                con.Close();
-
 
             }
             catch (Exception ex )
@@ -105,24 +112,27 @@ namespace POE_CLOUD_VERSION1
 
             try
             {
-                con.Open();
-                cmd = new SqlCommand
-                   ("select * from Rental;", con);
-                SqlDataReader dr = cmd.ExecuteReader();
-
-
-                if (dr.HasRows == true)
+                using (SqlConnection con = new SqlConnection(cs))
                 {
+                    con.Open();
+                    cmd = new SqlCommand
+                       ("select * from Rental;", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
 
-                    RentalDataGrid.DataSource = dr;
-                    RentalDataGrid.DataBind();
 
+                    if (dr.HasRows == true)
+                    {
+
+                        RentalDataGrid.DataSource = dr;
+                        RentalDataGrid.DataBind();
+
+                    }
+                    else
+                    {
+                        throw new ArgumentException();
+                    }
+                    con.Close();
                 }
-                else
-                {
-                    throw new ArgumentException();
-                }
-                con.Close();
 
             }
             catch (Exception)

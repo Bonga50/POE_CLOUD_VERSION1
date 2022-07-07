@@ -138,6 +138,9 @@
     <Content Include="LoginForm.aspx" />
     <Content Include="RentalForm.aspx" />
     <None Include="Properties\PublishProfiles\POECLOUDVERSION120220705194816 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\POECLOUDVERSION120220705194816 - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\POECLOUDVERSION120220707021107 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\POECLOUDVERSION120220707111328 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="ReturnForm.aspx" />
     <Content Include="Scripts\bootstrap.js" />

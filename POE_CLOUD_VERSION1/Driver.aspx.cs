@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace POE_CLOUD_VERSION1
 {
     public partial class Driver : System.Web.UI.Page
     {
-        SqlConnection con = new SqlConnection(@"Data Source=tcp:siyabongasv.database.windows.net,1433;Initial Catalog=RideYouRent_St10091114;User Id=st10091114@siyabongasv;Password=Drugkind22");
+        string cs = ConfigurationManager.ConnectionStrings["RideYouRent_St10091114ConnectionString"].ConnectionString;
+        //SqlConnection con = new SqlConnection(@"Data Source=tcp:siyabongasv.database.windows.net,1433;Initial Catalog=RideYouRent_St10091114;User Id=st10091114@siyabongasv;Password=Drugkind22");
         SqlCommand cmd;
         DataTable dt;
         SqlDataAdapter da;
@@ -27,20 +29,23 @@ namespace POE_CLOUD_VERSION1
             lblError.Visible = false;
             try
             {
-                con.Open();
-                cmd = new SqlCommand("select * from Driver where DriverID = "+ Int32.Parse(txtDriverID.Text)+";", con);
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows == true)
+                using (SqlConnection con = new SqlConnection(cs))
                 {
-                    DriverDataGrid.DataSource = dr;
-                    DriverDataGrid.DataBind();
+                    con.Open();
+                    cmd = new SqlCommand("select * from Driver where DriverID = " + Int32.Parse(txtDriverID.Text) + ";", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows == true)
+                    {
+                        DriverDataGrid.DataSource = dr;
+                        DriverDataGrid.DataBind();
 
+                    }
+                    else
+                    {
+                        throw new ArgumentException();
+                    }
+                    con.Close();
                 }
-                else
-                {
-                    throw new ArgumentException();
-                }
-                con.Close();
 
             }
             catch (Exception)
@@ -56,26 +61,29 @@ namespace POE_CLOUD_VERSION1
             lblError.Visible = false;
             try
             {
-                con.Open();
-                cmd = new SqlCommand("insert into Driver(FirstName, LastName, Email, Mobile, StreetNo, City, States, zipcode) values('"+
-                    txtDrivername.Text + "', '"
-                    + txtDriverSurname.Text + "', '" 
-                    + txtDriverEmail.Text + "', " 
-                    + Int32.Parse(txtDriverMobile.Text) + ", "+ 
-                    Int32.Parse(txtAddressNum.Text) + ", '"+
-                    txtDriverStreet.Text+"', '"+
-                    txtDriverState.Text+"', "+ 
-                    Int32.Parse(txtDriverZip.Text) + ");", con); ;
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows == true)
+                using (SqlConnection con = new SqlConnection(cs))
                 {
-                    DriverDataGrid.DataSource = dr;
-                    DriverDataGrid.DataBind();
+                    con.Open();
+                    cmd = new SqlCommand("insert into Driver(FirstName, LastName, Email, Mobile, StreetNo, City, States, zipcode) values('" +
+                        txtDrivername.Text + "', '"
+                        + txtDriverSurname.Text + "', '"
+                        + txtDriverEmail.Text + "', "
+                        + Int32.Parse(txtDriverMobile.Text) + ", " +
+                        Int32.Parse(txtAddressNum.Text) + ", '" +
+                        txtDriverStreet.Text + "', '" +
+                        txtDriverState.Text + "', " +
+                        Int32.Parse(txtDriverZip.Text) + ");", con); ;
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows == true)
+                    {
+                        DriverDataGrid.DataSource = dr;
+                        DriverDataGrid.DataBind();
 
+                    }
+                    lblError.Text = "Created";
+                    lblError.Visible = true;
+                    con.Close();
                 }
-                lblError.Text = "Created";
-                lblError.Visible = true;
-                con.Close();
 
             }
             catch (Exception)
@@ -90,28 +98,30 @@ namespace POE_CLOUD_VERSION1
             
             try
             {
-                con.Open();
-                cmd = new SqlCommand("update Driver set FirstName ='"
-                    +txtDrivername.Text+"', LastName='"+
-                    txtDriverSurname.Text + "', Email='"+
-                    txtDriverEmail.Text + "',Mobile = "+
-                    Int32.Parse(txtDriverMobile.Text) + 
-                    ",StreetNo="+ Int32.Parse(txtAddressNum.Text) 
-                    + ",City='"+ txtDriverStreet.Text 
-                    + "',States='"+ txtDriverState.Text
-                    + "',zipcode="+ Int32.Parse(txtDriverZip.Text) 
-                    + " where DriverID = "+ Int32.Parse(txtDriverID.Text) + ";", con); ;
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows == true)
+                using (SqlConnection con = new SqlConnection(cs))
                 {
-                    DriverDataGrid.DataSource = dr;
-                    DriverDataGrid.DataBind();
+                    con.Open();
+                    cmd = new SqlCommand("update Driver set FirstName ='"
+                        + txtDrivername.Text + "', LastName='" +
+                        txtDriverSurname.Text + "', Email='" +
+                        txtDriverEmail.Text + "',Mobile = " +
+                        Int32.Parse(txtDriverMobile.Text) +
+                        ",StreetNo=" + Int32.Parse(txtAddressNum.Text)
+                        + ",City='" + txtDriverStreet.Text
+                        + "',States='" + txtDriverState.Text
+                        + "',zipcode=" + Int32.Parse(txtDriverZip.Text)
+                        + " where DriverID = " + Int32.Parse(txtDriverID.Text) + ";", con); ;
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows == true)
+                    {
+                        DriverDataGrid.DataSource = dr;
+                        DriverDataGrid.DataBind();
 
+                    }
+                    lblError.Text = "Updated";
+                    lblError.Visible = true;
+                    con.Close();
                 }
-                lblError.Text = "Updated";
-                lblError.Visible = true;
-                con.Close();
-
             }
             catch (Exception)
             {
@@ -127,19 +137,21 @@ namespace POE_CLOUD_VERSION1
             //delete from Driver where DriverID = 1;
             try
             {
-                con.Open();
-                cmd = new SqlCommand("delete from Driver where DriverID = "+ Int32.Parse(txtDriverID.Text) + ";", con); ;
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows == true)
+                using (SqlConnection con = new SqlConnection(cs))
                 {
-                    DriverDataGrid.DataSource = dr;
-                    DriverDataGrid.DataBind();
+                    con.Open();
+                    cmd = new SqlCommand("delete from Driver where DriverID = " + Int32.Parse(txtDriverID.Text) + ";", con); ;
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows == true)
+                    {
+                        DriverDataGrid.DataSource = dr;
+                        DriverDataGrid.DataBind();
 
+                    }
+                    lblError.Text = "Deleted";
+                    lblError.Visible = true;
+                    con.Close();
                 }
-                lblError.Text = "Deleted";
-                lblError.Visible = true;
-                con.Close();
-
             }
             catch (Exception)
             {
@@ -163,18 +175,20 @@ namespace POE_CLOUD_VERSION1
         {
             try
             {
-                con.Open();
-                cmd = new SqlCommand("select * from Driver", con); ;
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows == true)
+                using (SqlConnection con = new SqlConnection(cs))
                 {
-                    DriverDataGrid.DataSource = dr;
-                    DriverDataGrid.DataBind();
+                    con.Open();
+                    cmd = new SqlCommand("select * from Driver", con); ;
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows == true)
+                    {
+                        DriverDataGrid.DataSource = dr;
+                        DriverDataGrid.DataBind();
 
+                    }
+
+                    con.Close();
                 }
-                
-                con.Close();
-
             }
             catch (Exception)
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace POE_CLOUD_VERSION1
 {
     public partial class LoginFrom : System.Web.UI.Page
     {
-        SqlConnection con = new SqlConnection(@"Data Source=tcp:siyabongasv.database.windows.net,1433;Initial Catalog=RideYouRent_St10091114;User Id=st10091114@siyabongasv;Password=Drugkind22");
+        string cs = ConfigurationManager.ConnectionStrings["RideYouRent_St10091114ConnectionString"].ConnectionString;
+        //SqlConnection con = new SqlConnection(cs);
         SqlCommand cmd;
         DataTable dt;
         SqlDataAdapter da;
@@ -30,27 +32,33 @@ namespace POE_CLOUD_VERSION1
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+          
             try
             {
-                con.Open();
-                cmd = new SqlCommand
-                   ("select Inspector.InspectorNo from Inspector where Inspector.InspectorNo = '"+txtLogin.Text+"'", con);
-                SqlDataReader dr = cmd.ExecuteReader();
-
-
-                if (dr.HasRows == true && txtPassword.Text.Equals("Password1"))
+                using (SqlConnection con = new SqlConnection(cs))
                 {
 
-                    Response.Redirect("OptionsForm.aspx");
+
+                    con.Open();
+                    cmd = new SqlCommand
+                       ("select Inspector.InspectorNo from Inspector where Inspector.InspectorNo = '" + txtLogin.Text + "'", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
 
 
+                    if (dr.HasRows == true && txtPassword.Text.Equals("Password1"))
+                    {
+
+                        Response.Redirect("OptionsForm.aspx");
+
+
+                    }
+                    else
+                    {
+                        lblError.Text = "User does not exist (Password: Password1)";
+                        lblError.Visible = true;
+                    }
+                    con.Close();
                 }
-                else {
-                    lblError.Text = "User does not exist (Password: Password1)";
-                    lblError.Visible = true;
-                }
-                con.Close();
-
             }
             catch (Exception)
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace POE_CLOUD_VERSION1
 {
     public partial class Inspector : System.Web.UI.Page
     {
-        SqlConnection con = new SqlConnection(@"Data Source=tcp:siyabongasv.database.windows.net,1433;Initial Catalog=RideYouRent_St10091114;User Id=st10091114@siyabongasv;Password=Drugkind22");
+        string cs = ConfigurationManager.ConnectionStrings["RideYouRent_St10091114ConnectionString"].ConnectionString;
+        //SqlConnection con = new SqlConnection(@"Data Source=tcp:siyabongasv.database.windows.net,1433;Initial Catalog=RideYouRent_St10091114;User Id=st10091114@siyabongasv;Password=Drugkind22");
         SqlCommand cmd;
         DataTable dt;
         SqlDataAdapter da;
@@ -27,20 +29,23 @@ namespace POE_CLOUD_VERSION1
             lblError.Visible = false;
             try
             {
-                con.Open();
-                 cmd = new SqlCommand("select * from Inspector",con);
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows == true)
+                using (SqlConnection con = new SqlConnection(cs))
+                {
+                    con.Open();
+                    cmd = new SqlCommand("select * from Inspector", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows == true)
                     {
-                    InspectorDataGrid.DataSource = dr;
-                    InspectorDataGrid.DataBind ();
-               
+                        InspectorDataGrid.DataSource = dr;
+                        InspectorDataGrid.DataBind();
+
                     }
                     else
                     {
                         throw new ArgumentException();
                     }
-                con.Close();
+                    con.Close();
+                }
 
             }
             catch (Exception)
@@ -55,20 +60,24 @@ namespace POE_CLOUD_VERSION1
             lblError.Visible = false;
             try
             {
-                con.Open();
-                cmd = new SqlCommand("select * from Inspector where inspectorNo = '"+txtInspectorNum.Text+"';", con);
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows == true)
+                using (SqlConnection con = new SqlConnection(cs))
                 {
-                    InspectorDataGrid.DataSource = dr;
-                    InspectorDataGrid.DataBind();
+                    con.Open();
+                    cmd = new SqlCommand("select * from Inspector where inspectorNo = '" + txtInspectorNum.Text + "';", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows == true)
+                    {
+                        InspectorDataGrid.DataSource = dr;
+                        InspectorDataGrid.DataBind();
 
+                    }
+                    else
+                    {
+                        throw new ArgumentException();
+                    }
+
+                    con.Close();
                 }
-                else {
-                    throw new ArgumentException();
-                }
-              
-                con.Close();
 
             }
             catch (Exception)
@@ -85,28 +94,31 @@ namespace POE_CLOUD_VERSION1
             lblError.Visible = false;
             try
             {
-                con.Open();
-                cmd = new SqlCommand("insert into  Inspector(InspectorNo, FirstName, LastName, Email, Mobile) values('"+
-                    txtInspectorNum.Text+"', '"
-                    +txtinspectorFname.Text+"', '"
-                    +txtInspectorSurname.Text+"', '"
-                    +txtInspectorEmail.Text+"', "
-                    +Int32.Parse(txtInspectorMobile.Text)+");", con);
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows == true)
+                using (SqlConnection con = new SqlConnection(cs))
                 {
-                    InspectorDataGrid.DataSource = dr;
-                    InspectorDataGrid.DataBind();
+                    con.Open();
+                    cmd = new SqlCommand("insert into  Inspector(InspectorNo, FirstName, LastName, Email, Mobile) values('" +
+                        txtInspectorNum.Text + "', '"
+                        + txtinspectorFname.Text + "', '"
+                        + txtInspectorSurname.Text + "', '"
+                        + txtInspectorEmail.Text + "', "
+                        + Int32.Parse(txtInspectorMobile.Text) + ");", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows == true)
+                    {
+                        InspectorDataGrid.DataSource = dr;
+                        InspectorDataGrid.DataBind();
 
-                }
-                else
-                {
-                    throw new ArgumentException();
-                }
+                    }
+                    else
+                    {
+                        throw new ArgumentException();
+                    }
 
-                lblError.Text = "Created";
-              lblError.Visible = true;  
-                con.Close();
+                    lblError.Text = "Created";
+                    lblError.Visible = true;
+                    con.Close();
+                }
 
             }
             catch (Exception)
@@ -123,22 +135,25 @@ namespace POE_CLOUD_VERSION1
             lblError.Visible = false;
             try
             {
-                con.Open();
-                cmd = new SqlCommand("update Inspector set FirstName = '"
-                    +txtinspectorFname.Text+"', LastName = '"
-                    +txtInspectorSurname.Text+"', Email = '"
-                    +txtInspectorEmail.Text+"', Mobile = "
-                    +Int32.Parse (txtInspectorMobile.Text)+"where InspectorNo = '"+txtInspectorNum.Text+"'", con);
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows == true)
+                using (SqlConnection con = new SqlConnection(cs))
                 {
-                    InspectorDataGrid.DataSource = dr;
-                    InspectorDataGrid.DataBind();
+                    con.Open();
+                    cmd = new SqlCommand("update Inspector set FirstName = '"
+                        + txtinspectorFname.Text + "', LastName = '"
+                        + txtInspectorSurname.Text + "', Email = '"
+                        + txtInspectorEmail.Text + "', Mobile = "
+                        + Int32.Parse(txtInspectorMobile.Text) + "where InspectorNo = '" + txtInspectorNum.Text + "'", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows == true)
+                    {
+                        InspectorDataGrid.DataSource = dr;
+                        InspectorDataGrid.DataBind();
 
+                    }
+                    lblError.Text = "Updated";
+                    lblError.Visible = true;
+                    con.Close();
                 }
-                lblError.Text = "Updated";
-                lblError.Visible = true;
-                con.Close();
 
             }
             catch (Exception)
@@ -154,18 +169,21 @@ namespace POE_CLOUD_VERSION1
             lblError.Visible = false;
             try
             {
-                con.Open();
-                cmd = new SqlCommand("delete from Inspector where InspectorNo = '"+txtInspectorNum.Text+"'", con);
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows == true)
+                using (SqlConnection con = new SqlConnection(cs))
                 {
-                    InspectorDataGrid.DataSource = dr;
-                    InspectorDataGrid.DataBind();
+                    con.Open();
+                    cmd = new SqlCommand("delete from Inspector where InspectorNo = '" + txtInspectorNum.Text + "'", con);
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows == true)
+                    {
+                        InspectorDataGrid.DataSource = dr;
+                        InspectorDataGrid.DataBind();
 
+                    }
+                    lblError.Text = "Deleted";
+                    lblError.Visible = true;
+                    con.Close();
                 }
-                lblError.Text = "Deleted";
-                lblError.Visible = true;
-                con.Close();
 
             }
             catch (Exception)
